@@ -1,0 +1,10 @@
+version: 1
+platform_id: "instagram"
+capability_id: "instagram.profile-posts.list"
+cases:
+  - name: "instagram_profile-posts_list"
+    input:
+      url: "https://www.instagram.com/nasa"
+    expect:
+      success: true
+    timeout_seconds: 120

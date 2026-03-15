@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "topic": {
+      "type": "string",
+      "description": "Topic slug, ID, or URL",
+      "example": "travel"
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Max results to return"
+    }
+  },
+  "required": [
+    "topic"
+  ]
+}

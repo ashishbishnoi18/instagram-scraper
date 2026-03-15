@@ -1,0 +1,10 @@
+version: 1
+platform_id: "instagram"
+capability_id: "instagram.hashtag.search"
+cases:
+  - name: "instagram_hashtag_search"
+    input:
+      hashtag: "photography"
+    expect:
+      success: true
+    timeout_seconds: 60

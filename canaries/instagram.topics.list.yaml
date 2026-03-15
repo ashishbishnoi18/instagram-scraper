@@ -1,0 +1,10 @@
+version: 1
+platform_id: "instagram"
+capability_id: "instagram.topics.list"
+cases:
+  - name: "instagram_topics_list"
+    input:
+
+    expect:
+      success: true
+    timeout_seconds: 5

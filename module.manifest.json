@@ -1,0 +1,155 @@
+{
+  "contract_version": "modspec/v1",
+  "platform_id": "instagram",
+  "module_version": "1.0.0",
+  "name": "Instagram Scraper",
+  "description": "Scrapes Instagram profiles, posts, reels, popular content, topics, and hashtags via GraphQL and REST APIs.",
+  "go_module_path": "github.com/embedtools/instagram-scraper",
+  "public_packages": [
+    "scraper",
+    "types"
+  ],
+  "network_mode": "host_fetch",
+  "defaults": {
+    "timeout_ms": 5000
+  },
+  "runtime": {
+    "worker_class": "generic",
+    "min_workers": 1,
+    "max_workers": 4,
+    "startup_timeout_ms": 5000,
+    "idle_ttl_ms": 300000,
+    "recycle_after_runs": 100,
+    "max_memory_mb": 512
+  },
+  "x-ui": {
+    "logo_path": "assets/logo.svg",
+    "icon_path": "assets/icon.svg",
+    "brand_color": "#E4405F"
+  },
+  "capabilities": [
+    {
+      "id": "instagram.profile.get",
+      "name": "Get Profile",
+      "description": "Runs Get Profile for Instagram.",
+      "method": "GetProfile",
+      "timeout_ms": 60000,
+      "run_cost": 1,
+      "max_fetch_parallelism": 1,
+      "default_async": true,
+      "input_schema": "schemas/instagram.profile.get.input.schema.json",
+      "output_schema": "schemas/instagram.profile.get.output.schema.json",
+      "example_input": "examples/instagram.profile.get.json",
+      "canary": "canaries/instagram.profile.get.yaml"
+    },
+    {
+      "id": "instagram.post.get",
+      "name": "Get Post",
+      "description": "Runs Get Post for Instagram.",
+      "method": "GetPost",
+      "timeout_ms": 60000,
+      "run_cost": 1,
+      "max_fetch_parallelism": 1,
+      "default_async": true,
+      "input_schema": "schemas/instagram.post.get.input.schema.json",
+      "output_schema": "schemas/instagram.post.get.output.schema.json",
+      "example_input": "examples/instagram.post.get.json",
+      "canary": "canaries/instagram.post.get.yaml"
+    },
+    {
+      "id": "instagram.profile-posts.list",
+      "name": "List Profile Posts",
+      "description": "Runs List Profile Posts for Instagram.",
+      "method": "ListProfilePosts",
+      "timeout_ms": 120000,
+      "run_cost": 2,
+      "max_fetch_parallelism": 3,
+      "default_async": true,
+      "input_schema": "schemas/instagram.profile-posts.list.input.schema.json",
+      "output_schema": "schemas/instagram.profile-posts.list.output.schema.json",
+      "example_input": "examples/instagram.profile-posts.list.json",
+      "canary": "canaries/instagram.profile-posts.list.yaml"
+    },
+    {
+      "id": "instagram.reels.list",
+      "name": "List Reels",
+      "description": "Runs List Reels for Instagram.",
+      "method": "ListReels",
+      "timeout_ms": 120000,
+      "run_cost": 2,
+      "max_fetch_parallelism": 3,
+      "default_async": true,
+      "input_schema": "schemas/instagram.reels.list.input.schema.json",
+      "output_schema": "schemas/instagram.reels.list.output.schema.json",
+      "example_input": "examples/instagram.reels.list.json",
+      "canary": "canaries/instagram.reels.list.yaml"
+    },
+    {
+      "id": "instagram.popular.search",
+      "name": "Search Popular",
+      "description": "Runs Search Popular for Instagram.",
+      "method": "SearchPopular",
+      "timeout_ms": 60000,
+      "run_cost": 2,
+      "max_fetch_parallelism": 3,
+      "default_async": true,
+      "input_schema": "schemas/instagram.popular.search.input.schema.json",
+      "output_schema": "schemas/instagram.popular.search.output.schema.json",
+      "example_input": "examples/instagram.popular.search.json",
+      "canary": "canaries/instagram.popular.search.yaml"
+    },
+    {
+      "id": "instagram.topics.list",
+      "name": "List Topics",
+      "description": "Runs List Topics for Instagram.",
+      "method": "ListTopics",
+      "timeout_ms": 5000,
+      "run_cost": 2,
+      "max_fetch_parallelism": 3,
+      "default_async": false,
+      "input_schema": "schemas/instagram.topics.list.input.schema.json",
+      "output_schema": "schemas/instagram.topics.list.output.schema.json",
+      "example_input": "examples/instagram.topics.list.json",
+      "canary": "canaries/instagram.topics.list.yaml"
+    },
+    {
+      "id": "instagram.topic.search",
+      "name": "Search Topic",
+      "description": "Runs Search Topic for Instagram.",
+      "method": "SearchTopic",
+      "timeout_ms": 60000,
+      "run_cost": 2,
+      "max_fetch_parallelism": 3,
+      "default_async": true,
+      "input_schema": "schemas/instagram.topic.search.input.schema.json",
+      "output_schema": "schemas/instagram.topic.search.output.schema.json",
+      "example_input": "examples/instagram.topic.search.json",
+      "canary": "canaries/instagram.topic.search.yaml"
+    },
+    {
+      "id": "instagram.hashtag.search",
+      "name": "Search Hashtag",
+      "description": "Runs Search Hashtag for Instagram.",
+      "method": "SearchHashtag",
+      "timeout_ms": 60000,
+      "run_cost": 2,
+      "max_fetch_parallelism": 3,
+      "default_async": true,
+      "input_schema": "schemas/instagram.hashtag.search.input.schema.json",
+      "output_schema": "schemas/instagram.hashtag.search.output.schema.json",
+      "example_input": "examples/instagram.hashtag.search.json",
+      "canary": "canaries/instagram.hashtag.search.yaml"
+    }
+  ],
+  "x-network": {
+    "requires_tls_fingerprinting": false,
+    "requires_proxy": true
+  },
+  "x-meta": {
+    "module_id": "instagram-scraper",
+    "author": "embedtools",
+    "license": "MIT",
+    "entry_package": "scraper",
+    "version": "1.0.0"
+  }
+}

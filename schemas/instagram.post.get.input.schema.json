@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "Instagram post URL",
+      "example": "https://www.instagram.com/p/ABC123/"
+    }
+  },
+  "required": [
+    "url"
+  ]
+}

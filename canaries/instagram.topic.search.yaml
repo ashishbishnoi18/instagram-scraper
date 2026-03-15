@@ -1,0 +1,10 @@
+version: 1
+platform_id: "instagram"
+capability_id: "instagram.topic.search"
+cases:
+  - name: "instagram_topic_search"
+    input:
+      topic: "travel"
+    expect:
+      success: true
+    timeout_seconds: 60

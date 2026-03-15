@@ -1,0 +1,10 @@
+version: 1
+platform_id: "instagram"
+capability_id: "instagram.post.get"
+cases:
+  - name: "instagram_post_get"
+    input:
+      url: "https://www.instagram.com/p/ABC123/"
+    expect:
+      success: true
+    timeout_seconds: 60

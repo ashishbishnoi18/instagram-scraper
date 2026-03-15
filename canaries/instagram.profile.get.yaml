@@ -1,0 +1,10 @@
+version: 1
+platform_id: "instagram"
+capability_id: "instagram.profile.get"
+cases:
+  - name: "instagram_profile_get"
+    input:
+      url: "https://www.instagram.com/nasa"
+    expect:
+      success: true
+    timeout_seconds: 60

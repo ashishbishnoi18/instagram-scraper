@@ -1,0 +1,10 @@
+version: 1
+platform_id: "instagram"
+capability_id: "instagram.reels.list"
+cases:
+  - name: "instagram_reels_list"
+    input:
+      url: "https://www.instagram.com/nasa"
+    expect:
+      success: true
+    timeout_seconds: 120

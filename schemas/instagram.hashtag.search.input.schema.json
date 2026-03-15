@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "hashtag": {
+      "type": "string",
+      "description": "Hashtag to search",
+      "example": "photography"
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Max results to return"
+    }
+  },
+  "required": [
+    "hashtag"
+  ]
+}

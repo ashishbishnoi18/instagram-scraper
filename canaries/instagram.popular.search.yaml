@@ -1,0 +1,10 @@
+version: 1
+platform_id: "instagram"
+capability_id: "instagram.popular.search"
+cases:
+  - name: "instagram_popular_search"
+    input:
+      keyword: "travel"
+    expect:
+      success: true
+    timeout_seconds: 60

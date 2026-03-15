@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "Instagram profile URL or username",
+      "example": "https://www.instagram.com/nasa"
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Max posts to return"
+    },
+    "since": {
+      "type": "integer",
+      "description": "Unix timestamp, skip posts older than this"
+    },
+    "max_pages": {
+      "type": "integer",
+      "description": "Max pages to paginate"
+    }
+  },
+  "required": [
+    "url"
+  ]
+}

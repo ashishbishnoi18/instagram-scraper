@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "Instagram profile URL or username",
+      "example": "https://www.instagram.com/nasa"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional field filter"
+    }
+  },
+  "required": [
+    "url"
+  ]
+}
