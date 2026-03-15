@@ -68,43 +68,57 @@ func CreateRotatingProxyClient(baseProxyURL string, attempt int) *http.Client {
 
 // GetSession fetches Instagram homepage to get session cookies.
 func GetSession(ctx context.Context, httpClient *http.Client, proxyURL string) (*Session, error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, "https://www.instagram.com/", nil)
-	if err != nil {
-		return nil, fmt.Errorf("error creating session request: %w", err)
-	}
+	var lastErr error
 
-	req.Header.Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
-	req.Header.Set("Accept-Language", "en-US,en;q=0.9")
-	req.Header.Set("User-Agent", DefaultUserAgent)
-
-	client := httpClient
-	if proxyURL != "" {
-		client = CreateRotatingProxyClient(proxyURL, 0)
-		defer client.CloseIdleConnections()
-	}
-
-	resp, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error fetching session: %w", err)
-	}
-	defer resp.Body.Close()
-	io.Copy(io.Discard, resp.Body)
-
-	session := &Session{}
-	for _, cookie := range resp.Cookies() {
-		switch cookie.Name {
-		case "csrftoken":
-			session.CSRFToken = cookie.Value
-		case "mid":
-			session.Mid = cookie.Value
+	for attempt := 0; attempt < MaxRetries; attempt++ {
+		req, err := http.NewRequestWithContext(ctx, http.MethodGet, "https://www.instagram.com/", nil)
+		if err != nil {
+			return nil, fmt.Errorf("error creating session request: %w", err)
 		}
+
+		req.Header.Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+		req.Header.Set("Accept-Language", "en-US,en;q=0.9")
+		req.Header.Set("User-Agent", DefaultUserAgent)
+
+		client := httpClient
+		if proxyURL != "" {
+			client = CreateRotatingProxyClient(proxyURL, attempt)
+			defer client.CloseIdleConnections()
+		}
+
+		resp, err := client.Do(req)
+		if err != nil {
+			lastErr = fmt.Errorf("error fetching session: %w", err)
+			time.Sleep(BaseBackoffDelay * time.Duration(1<<attempt))
+			continue
+		}
+
+		session := &Session{}
+		for _, cookie := range resp.Cookies() {
+			switch cookie.Name {
+			case "csrftoken":
+				session.CSRFToken = cookie.Value
+			case "mid":
+				session.Mid = cookie.Value
+			}
+		}
+
+		io.Copy(io.Discard, resp.Body)
+		resp.Body.Close()
+
+		if session.CSRFToken != "" {
+			return session, nil
+		}
+
+		lastErr = fmt.Errorf("failed to get CSRF token from Instagram")
+		time.Sleep(BaseBackoffDelay * time.Duration(1<<attempt))
 	}
 
-	if session.CSRFToken == "" {
-		return nil, fmt.Errorf("failed to get CSRF token from Instagram")
+	if lastErr != nil {
+		return nil, lastErr
 	}
 
-	return session, nil
+	return nil, fmt.Errorf("failed to get CSRF token from Instagram")
 }
 
 // FetchProfileData fetches profile data from Instagram API.
