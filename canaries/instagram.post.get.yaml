@@ -4,7 +4,7 @@ capability_id: "instagram.post.get"
 cases:
   - name: "instagram_post_get"
     input:
-      url: "https://www.instagram.com/p/ABC123/"
+      url: "https://www.instagram.com/p/DV093UJknka/"
     expect:
-      success: true
+      min_results: 1
     timeout_seconds: 60

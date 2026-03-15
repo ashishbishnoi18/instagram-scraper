@@ -6,5 +6,5 @@ cases:
     input:
       topic: "travel"
     expect:
-      success: true
+      min_results: 1
     timeout_seconds: 60

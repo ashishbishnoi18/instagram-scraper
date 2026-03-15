@@ -6,5 +6,5 @@ cases:
     input:
       keyword: "travel"
     expect:
-      success: true
+      min_results: 1
     timeout_seconds: 60

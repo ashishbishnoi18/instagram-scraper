@@ -6,5 +6,5 @@ cases:
     input:
       url: "https://www.instagram.com/nasa"
     expect:
-      success: true
+      min_results: 1
     timeout_seconds: 60

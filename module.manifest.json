@@ -1,9 +1,9 @@
 {
   "contract_version": "modspec/v1",
   "platform_id": "instagram",
-  "module_version": "1.0.0",
+  "module_version": "1.0.1",
   "name": "Instagram Scraper",
-  "description": "Scrapes Instagram profiles, posts, reels, popular content, topics, and hashtags via GraphQL and REST APIs.",
+  "description": "Scrapes Instagram profiles, posts, reels, and topics via public GraphQL and REST APIs.",
   "go_module_path": "github.com/embedtools/instagram-scraper",
   "public_packages": [
     "scraper",
@@ -85,20 +85,6 @@
       "canary": "canaries/instagram.reels.list.yaml"
     },
     {
-      "id": "instagram.popular.search",
-      "name": "Search Popular",
-      "description": "Runs Search Popular for Instagram.",
-      "method": "SearchPopular",
-      "timeout_ms": 60000,
-      "run_cost": 2,
-      "max_fetch_parallelism": 3,
-      "default_async": true,
-      "input_schema": "schemas/instagram.popular.search.input.schema.json",
-      "output_schema": "schemas/instagram.popular.search.output.schema.json",
-      "example_input": "examples/instagram.popular.search.json",
-      "canary": "canaries/instagram.popular.search.yaml"
-    },
-    {
       "id": "instagram.topics.list",
       "name": "List Topics",
       "description": "Runs List Topics for Instagram.",
@@ -111,45 +97,17 @@
       "output_schema": "schemas/instagram.topics.list.output.schema.json",
       "example_input": "examples/instagram.topics.list.json",
       "canary": "canaries/instagram.topics.list.yaml"
-    },
-    {
-      "id": "instagram.topic.search",
-      "name": "Search Topic",
-      "description": "Runs Search Topic for Instagram.",
-      "method": "SearchTopic",
-      "timeout_ms": 60000,
-      "run_cost": 2,
-      "max_fetch_parallelism": 3,
-      "default_async": true,
-      "input_schema": "schemas/instagram.topic.search.input.schema.json",
-      "output_schema": "schemas/instagram.topic.search.output.schema.json",
-      "example_input": "examples/instagram.topic.search.json",
-      "canary": "canaries/instagram.topic.search.yaml"
-    },
-    {
-      "id": "instagram.hashtag.search",
-      "name": "Search Hashtag",
-      "description": "Runs Search Hashtag for Instagram.",
-      "method": "SearchHashtag",
-      "timeout_ms": 60000,
-      "run_cost": 2,
-      "max_fetch_parallelism": 3,
-      "default_async": true,
-      "input_schema": "schemas/instagram.hashtag.search.input.schema.json",
-      "output_schema": "schemas/instagram.hashtag.search.output.schema.json",
-      "example_input": "examples/instagram.hashtag.search.json",
-      "canary": "canaries/instagram.hashtag.search.yaml"
     }
   ],
   "x-network": {
     "requires_tls_fingerprinting": false,
-    "requires_proxy": true
+    "requires_proxy": false
   },
   "x-meta": {
     "module_id": "instagram-scraper",
     "author": "embedtools",
     "license": "MIT",
     "entry_package": "scraper",
-    "version": "1.0.0"
+    "version": "1.0.1"
   }
 }
