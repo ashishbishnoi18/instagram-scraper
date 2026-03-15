@@ -1,7 +1,7 @@
 {
   "contract_version": "modspec/v1",
   "platform_id": "instagram",
-  "module_version": "1.0.1",
+  "module_version": "1.0.2",
   "name": "Instagram Scraper",
   "description": "Scrapes Instagram profiles, posts, reels, and topics via public GraphQL and REST APIs.",
   "go_module_path": "github.com/embedtools/instagram-scraper",
@@ -108,6 +108,6 @@
     "author": "embedtools",
     "license": "MIT",
     "entry_package": "scraper",
-    "version": "1.0.1"
+    "version": "1.0.2"
   }
 }

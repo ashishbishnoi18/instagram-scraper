@@ -5,6 +5,8 @@ cases:
   - name: "instagram_reels_list"
     input:
       url: "https://www.instagram.com/nasa"
+      limit: 5
+      max_pages: 1
     expect:
       min_results: 1
     timeout_seconds: 120
