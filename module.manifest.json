@@ -40,7 +40,8 @@
       "input_schema": "schemas/instagram.profile.get.input.schema.json",
       "output_schema": "schemas/instagram.profile.get.output.schema.json",
       "example_input": "examples/instagram.profile.get.json",
-      "canary": "canaries/instagram.profile.get.yaml"
+      "canary": "canaries/instagram.profile.get.yaml",
+      "billing_metric": "per_request"
     },
     {
       "id": "instagram.post.get",
@@ -54,7 +55,8 @@
       "input_schema": "schemas/instagram.post.get.input.schema.json",
       "output_schema": "schemas/instagram.post.get.output.schema.json",
       "example_input": "examples/instagram.post.get.json",
-      "canary": "canaries/instagram.post.get.yaml"
+      "canary": "canaries/instagram.post.get.yaml",
+      "billing_metric": "per_request"
     },
     {
       "id": "instagram.profile-posts.list",
@@ -68,7 +70,8 @@
       "input_schema": "schemas/instagram.profile-posts.list.input.schema.json",
       "output_schema": "schemas/instagram.profile-posts.list.output.schema.json",
       "example_input": "examples/instagram.profile-posts.list.json",
-      "canary": "canaries/instagram.profile-posts.list.yaml"
+      "canary": "canaries/instagram.profile-posts.list.yaml",
+      "billing_metric": "per_request"
     },
     {
       "id": "instagram.reels.list",
@@ -82,7 +85,8 @@
       "input_schema": "schemas/instagram.reels.list.input.schema.json",
       "output_schema": "schemas/instagram.reels.list.output.schema.json",
       "example_input": "examples/instagram.reels.list.json",
-      "canary": "canaries/instagram.reels.list.yaml"
+      "canary": "canaries/instagram.reels.list.yaml",
+      "billing_metric": "per_request"
     },
     {
       "id": "instagram.topics.list",
@@ -96,7 +100,8 @@
       "input_schema": "schemas/instagram.topics.list.input.schema.json",
       "output_schema": "schemas/instagram.topics.list.output.schema.json",
       "example_input": "examples/instagram.topics.list.json",
-      "canary": "canaries/instagram.topics.list.yaml"
+      "canary": "canaries/instagram.topics.list.yaml",
+      "billing_metric": "per_request"
     }
   ],
   "x-network": {
