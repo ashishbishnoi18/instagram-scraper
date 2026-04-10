@@ -1,4 +1,8 @@
 {
   "type": "object",
-  "additionalProperties": true
+  "additionalProperties": true,
+  "properties": {
+    "items": {},
+    "summary": {}
+  }
 }

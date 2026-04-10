@@ -1,4 +1,9 @@
 {
   "type": "object",
-  "additionalProperties": true
+  "additionalProperties": true,
+  "properties": {
+    "data": {},
+    "is_private": {},
+    "username": {}
+  }
 }
